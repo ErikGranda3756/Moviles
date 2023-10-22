@@ -1,0 +1,40 @@
+<form fxLayout="column" [formGroup]="group">
+  <h2>Credenciales</h2>
+  <mat-form-field>
+    <mat-label>Correo</mat-label>
+    <input
+      matInput
+      required
+      placeholder="Ingrese su correo"
+      type="text"
+      formControlName="email"
+    />
+    <mat-icon matSuffix>email</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Contraseña</mat-label>
+    <input
+      matInput
+      required
+      placeholder="Ingrese su contraseña"
+      type="{{ togglePassword ? 'password' : 'text' }}"
+      formControlName="password"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      (click)="togglePassword = !togglePassword"
+    >
+      <mat-icon matSuffix>{{ togglePassword ? "lock" : "lock_open" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="login()"
+    [disabled]="group.invalid"
+  >
+    Iniciar Sesión
+  </button>
+</form>
